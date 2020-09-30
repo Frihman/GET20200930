@@ -13,7 +13,7 @@ app.get('/:id', (req, res) => {
     if (req.params.id == 'notes') {
         
         notes.forEach(function myFunction(item) {
-        res.write(item.name + ': \n' + item.content + ' \n');
+        res.write(item.name + ': \n' + item.content + ' \n \n');
 
         });
 
