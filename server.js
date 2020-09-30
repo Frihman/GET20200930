@@ -25,6 +25,16 @@ app.get('/:id', (req, res) => {
     
 });
 
+app.get('/notes/:id', (req, res) => {
+    res.header("Content-Type", "application/json; charset=utf-8");
+    if(typeof notes[name] === 'undefined') {
+        res.send('404 page not found');
+    }
+    else {
+        res.send(notes.find(x => x.name === req.params.id).content);
+    }
+});
+
 app.listen(8080);
 
 console.log('Server running...');
