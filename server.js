@@ -7,8 +7,23 @@ app.get('/', (req,res) => {
     res.send('Tjena');
 });
 
+app.get('/:id', (req, res) => {
+    if (req.params.id == 'notes') {
+        notes.forEach(function myFunction(item) {
+        res.write(item + ' ');
+        });
+
+        res.end();
+
+        
+    } else {
+        res.send('404 page not found');
+    }
+    
+})
+
 app.get('/notes', (req, res) => {
-    notes.forEach(element => res.send(element));
+    
 });
 
 app.listen(8080);
