@@ -12,7 +12,7 @@ app.get('/:id', (req, res) => {
     res.header("Content-Type", "application/json; charset=utf-8");
     if (req.params.id == 'notes') {
         
-        notes.forEach(function myFunction(item) {
+        notes.forEach((item) => {
         res.write(item.name + ': \n' + item.content + ' \n \n');
 
         });
@@ -27,12 +27,15 @@ app.get('/:id', (req, res) => {
 
 app.get('/notes/:id', (req, res) => {
     res.header("Content-Type", "application/json; charset=utf-8");
-    if(typeof notes[name] === 'undefined') {
+    if (notes.find(x => x.name === req.params.id)) {
+        var result = notes.find(x => x.name === req.params.id);
+        res.send(result.name + '\n' + result.content);
+    } else {
         res.send('404 page not found');
     }
-    else {
-        res.send(notes.find(x => x.name === req.params.id).content);
-    }
+    
+
+
 });
 
 app.listen(8080);
